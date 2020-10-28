@@ -8,6 +8,7 @@ const NavWrapper = styled.ul`
   display: flex;
   padding: 0;
   box-shadow: 0 0 3px rgba(0,0,0,0.5);
+  background: #ffffff;
   > li {
     width: 33.333%;
     font-size:12px;

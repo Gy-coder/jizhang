@@ -1,16 +1,13 @@
 import {Layout} from '../component/Layout';
 import React from 'react';
 import {ChooseType} from '../component/Money/chooseType';
-
+import {OutputMoney} from '../component/Money/outputMoney';
 
 const Money:React.FC = ()=> {
   return (
     <Layout>
       <ChooseType />
-      <div>
-        <span>@</span>
-        <span>$100</span>
-      </div>
+      <OutputMoney />
       <div>
         <ol>
           <li>吃饭</li>
@@ -27,9 +24,9 @@ const Money:React.FC = ()=> {
         numberPad
       </div>
     </Layout>
-
   );
 }
+
 
 
 export {Money}

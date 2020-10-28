@@ -14,37 +14,54 @@ function App() {
       {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
       <Switch>
-        <Route path="/about">
-          <About/>
+        <Route path="/money">
+         <Money/>
         </Route>
-        <Route path="/users">
-          <Users/>
+        <Route path="/statistics">
+          <Statistics/>
         </Route>
-        <Route path="/Home">
-          <Home/>
+        <Route path="/chart">
+          <Chart/>
         </Route>
-        <Redirect to="Home" />
-
+        <Redirect to="money" />
+        <Route path="*">
+          <NoMatch />
+        </Route>
       </Switch>
     </Router>
   );
 }
 
-function Home() {
+function Money() {
   return (
     <Layout>
-      Home
+      Money
     </Layout>
   );
 }
 
-function About() {
-  return <h2>About</h2>;
+function Statistics() {
+  return (
+    <Layout>
+      Statistics
+    </Layout>
+  );
 }
 
-function Users() {
-  return <h2>Users</h2>;
+function Chart() {
+  return (
+    <Layout>
+      Chart
+    </Layout>
+  );
 }
 
+function NoMatch(){
+  return (
+    <>
+     this page not exist
+    </>
+  )
+}
 
 export default App;

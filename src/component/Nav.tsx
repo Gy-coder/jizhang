@@ -6,7 +6,6 @@ import {Icon} from './Icon';
 
 const NavWrapper = styled.ul`
   display: flex;
-  padding: 0;
   box-shadow: 0 0 3px rgba(0,0,0,0.5);
   background: #ffffff;
   > li {
@@ -20,7 +19,7 @@ const NavWrapper = styled.ul`
       display:flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
+      align-items: center;       
      > .icon{
         width: 24px;
         height: 24px;

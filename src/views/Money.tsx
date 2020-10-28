@@ -3,26 +3,21 @@ import React from 'react';
 import {ChooseType} from '../component/Money/chooseType';
 import {OutputMoney} from '../component/Money/outputMoney';
 import {Tags} from '../component/Money/tags';
+import {Notes} from '../component/Money/notes';
 
-const Money:React.FC = ()=> {
+const Money: React.FC = () => {
   return (
     <Layout>
-      <ChooseType />
-      <OutputMoney />
-      <Tags />
-      <div className='note'>
-        <span>备注</span>
-        <label>
-          <input />
-        </label>
-      </div>
+      <ChooseType/>
+      <OutputMoney/>
+      <Tags/>
+      <Notes/>
       <div className="numberPad">
         numberPad
       </div>
     </Layout>
   );
-}
+};
 
 
-
-export {Money}
+export {Money};

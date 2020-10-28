@@ -14,14 +14,10 @@ const tagsData: tagsDataType[] = [
   {id: 'transport', name: '交通'},
   {id: 'transport', name: '交通'},
   {id: 'transport', name: '交通'},
-
   {id: 'transport', name: '交通'},
-
   {id: 'transport', name: '交通'},
-
 ];
 const TagsWrapper = styled.div`
-  border:1px solid red;
   background: #ffffff;
   display:flex;
   flex-direction: row;
@@ -40,7 +36,6 @@ const TagItemWrapper = styled.div`
   > .icon{
     width: 24px;
     height: 24px;
-    border: 1px solid red;
   }
 `
 const Tags: React.FC = () => {

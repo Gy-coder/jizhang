@@ -6,7 +6,11 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import {Layout} from './component/Layout';
+import {Money} from './views/Money';
+import {Statistics} from './views/Statistics';
+import {Chart} from './views/Chart';
+import {NoMatch} from './views/NoMatch';
+
 
 function App() {
   return (
@@ -32,36 +36,9 @@ function App() {
   );
 }
 
-function Money() {
-  return (
-    <Layout>
-      Money
-    </Layout>
-  );
-}
 
-function Statistics() {
-  return (
-    <Layout>
-      Statistics
-    </Layout>
-  );
-}
 
-function Chart() {
-  return (
-    <Layout>
-      Chart
-    </Layout>
-  );
-}
 
-function NoMatch(){
-  return (
-    <>
-     this page not exist
-    </>
-  )
-}
+
 
 export default App;

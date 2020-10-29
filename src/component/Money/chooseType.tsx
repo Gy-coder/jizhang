@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
 
@@ -30,10 +30,18 @@ const ChooseTypeWrapper = styled.ol`
 `;
 
 const ChooseType: React.FC = () => {
+  const [type,setType] = useState<('-' | '+')>('-')
+  const typeClick = (type:('-' | '+'))=>{
+    setType(type)
+  }
   return (
     <ChooseTypeWrapper>
-      <li className='select'>支出</li>
-      <li>收入</li>
+      <li className={type === '-' ? 'select' : ''}
+          onClick={()=>typeClick('-')}
+      >支出</li>
+      <li className={type === '+' ? 'select' : ''}
+          onClick={()=>typeClick('+')}
+      >收入</li>
     </ChooseTypeWrapper>
   );
 };

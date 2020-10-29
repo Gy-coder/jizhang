@@ -21,11 +21,12 @@ const TagsWrapper = styled.div`
   background: #ffffff;
   display:flex;
   flex-direction: row;
+  align-content: flex-start;
   padding: 16px;  
   flex-wrap: wrap;
   flex-grow: 1;
-  align-content: center;
   padding-left: 35px;
+  font-size: 10px;
 `;
 
 const Tags: React.FC = () => {

@@ -9,6 +9,8 @@ const LayoutWrapper = styled.div`
   min-height: 100vh;
   > .LayoutContent{
     flex-grow: 1;
+    display:flex;
+    flex-direction: column;
   }
 `
 const Layout: React.FC = (props)=>{

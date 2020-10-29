@@ -4,6 +4,7 @@ import {ChooseType} from '../component/Money/chooseType';
 import {OutputMoney} from '../component/Money/outputMoney';
 import {Tags} from '../component/Money/tags';
 import {Notes} from '../component/Money/notes';
+import {NumberPad} from '../component/Money/numberPad';
 
 const Money: React.FC = () => {
   return (
@@ -12,9 +13,7 @@ const Money: React.FC = () => {
       <OutputMoney/>
       <Tags/>
       <Notes/>
-      <div className="numberPad">
-        numberPad
-      </div>
+      <NumberPad />
     </Layout>
   );
 };

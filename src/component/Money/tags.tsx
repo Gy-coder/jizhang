@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Icon} from '../Icon';
+import {TagItem} from './tagItem';
 
 type tagsDataType = {
   id: string,
@@ -27,26 +27,13 @@ const TagsWrapper = styled.div`
   align-content: center;
   padding-left: 35px;
 `;
-const TagItemWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin:10px 20px;
-  > .icon{
-    width: 24px;
-    height: 24px;
-  }
-`
+
 const Tags: React.FC = () => {
   return (
     <TagsWrapper>
       {tagsData.map(item => {
         return (
-          <TagItemWrapper>
-            <Icon name={item.id}/>
-            <span>{item.name}</span>
-          </TagItemWrapper>
+          <TagItem tagName={item.name} id={item.id}/>
         );
       })}
     </TagsWrapper>

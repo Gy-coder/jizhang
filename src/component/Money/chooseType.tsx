@@ -29,7 +29,7 @@ const ChooseTypeWrapper = styled.ol`
   }
 `;
 
-const ChooseType: React.FC = () => {
+const ChooseType: React.FC = (props) => {
   const [type,setType] = useState<('-' | '+')>('-')
   const typeClick = (type:('-' | '+'))=>{
     setType(type)

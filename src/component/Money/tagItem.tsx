@@ -1,12 +1,9 @@
 import {Icon} from '../Icon';
 import React from 'react';
 import styled from 'styled-components';
+import {tagItemType} from '../../lib/tagItemType';
 
 
-type tagItemType = {
-  id: string,
-  tagName: string
-}
 
 const TagItemWrapper = styled.div`
   display: flex;

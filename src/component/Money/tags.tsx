@@ -1,21 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import {TagItem} from './tagItem';
+import {tagItemType} from '../../lib/tagItemType';
 
-type tagsDataType = {
-  id: string,
-  name: string
-}
-const tagsData: tagsDataType[] = [
-  {id: 'others', name: '其它'},
-  {id: 'food', name: '餐饮'},
-  {id: 'shopping', name: '购物'},
-  {id: 'clothes', name: '服饰'},
-  {id: 'transport', name: '交通'},
-  {id: 'transport', name: '交通'},
-  {id: 'transport', name: '交通'},
-  {id: 'transport', name: '交通'},
-  {id: 'transport', name: '交通'},
+const tagsData: tagItemType[] = [
+  {id: 'others', tagName: '其它'},
+  {id: 'food', tagName: '餐饮'},
+  {id: 'shopping', tagName: '购物'},
+  {id: 'clothes', tagName: '服饰'},
+  {id: 'transport', tagName: '交通'},
+  {id: 'transport', tagName: '交通'},
+  {id: 'transport',tagName: '交通'},
+  {id: 'transport', tagName: '交通'},
+  {id: 'transport', tagName: '交通'},
 ];
 const TagsWrapper = styled.div`
   background: #ffffff;
@@ -34,7 +31,7 @@ const Tags: React.FC = () => {
     <TagsWrapper>
       {tagsData.map(item => {
         return (
-          <TagItem tagName={item.name} id={item.id}/>
+          <TagItem tagName={item.tagName} id={item.id}/>
         );
       })}
     </TagsWrapper>

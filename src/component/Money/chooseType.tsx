@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
-
 
 
 const ChooseTypeWrapper = styled.ol`
@@ -29,19 +28,21 @@ const ChooseTypeWrapper = styled.ol`
   }
 `;
 
-const ChooseType: React.FC = (props) => {
-  const [type,setType] = useState<('-' | '+')>('-')
-  const typeClick = (type:('-' | '+'))=>{
-    setType(type)
-  }
+type Props = {
+  type: ('-' | '+')
+  onChange: (type: ('-' | '+')) => void
+}
+const ChooseType: React.FC<Props> = (props: Props) => {
   return (
     <ChooseTypeWrapper>
-      <li className={type === '-' ? 'select' : ''}
-          onClick={()=>typeClick('-')}
-      >支出</li>
-      <li className={type === '+' ? 'select' : ''}
-          onClick={()=>typeClick('+')}
-      >收入</li>
+      <li className={props.type === '-' ? 'select' : ''}
+          onClick={() => props.onChange('-')}
+      >支出
+      </li>
+      <li className={props.type === '+' ? 'select' : ''}
+          onClick={() => props.onChange('+')}
+      >收入
+      </li>
     </ChooseTypeWrapper>
   );
 };

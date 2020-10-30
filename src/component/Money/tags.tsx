@@ -8,11 +8,7 @@ const tagsData: tagItemType[] = [
   {id: 'food', tagName: '餐饮'},
   {id: 'shopping', tagName: '购物'},
   {id: 'clothes', tagName: '服饰'},
-  {id: 'transport', tagName: '交通'},
-  {id: 'transport', tagName: '交通'},
-  {id: 'transport',tagName: '交通'},
-  {id: 'transport', tagName: '交通'},
-  {id: 'transport', tagName: '交通'},
+  {id:'transport',tagName: '交通'}
 ];
 const TagsWrapper = styled.div`
   background: #ffffff;
@@ -31,7 +27,7 @@ const Tags: React.FC = () => {
     <TagsWrapper>
       {tagsData.map(item => {
         return (
-          <TagItem tagName={item.tagName} id={item.id}/>
+          <TagItem key={item.id} tagName={item.tagName} id={item.id}/>
         );
       })}
     </TagsWrapper>

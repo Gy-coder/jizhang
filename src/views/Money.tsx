@@ -5,12 +5,15 @@ import {OutputMoney} from '../component/Money/outputMoney';
 import {Tags} from '../component/Money/tags';
 import {Notes} from '../component/Money/notes';
 import {NumberPad} from '../component/Money/numberPad';
+import {useRecordItem} from '../hooks/useRecordItem';
 
 const Money: React.FC = () => {
+  const {recordItem,setRecordItem} = useRecordItem()
   return (
     <Layout>
-      <ChooseType/>
-      <OutputMoney/>
+      {recordItem.type}
+      <ChooseType type={recordItem.type} onChange={(type)=> setRecordItem({...recordItem,type:type})} />
+      <OutputMoney amount={recordItem.amount} name={recordItem.tag.id}/>
       <Tags/>
       <Notes/>
       <NumberPad />

@@ -17,11 +17,16 @@ const OutPutMoneyWrapper = styled.div`
     fill: red;
   }
 `;
-const OutputMoney: React.FC = () => {
+
+type Props = {
+  name:string,
+  amount:number
+}
+const OutputMoney: React.FC<Props> = (props) => {
   return (
     <OutPutMoneyWrapper>
-      <Icon name='others'/>
-      <span>$100</span>
+      <Icon name={props.name}/>
+      <span>{'$' + props.amount.toString()}</span>
     </OutPutMoneyWrapper>
   );
 };

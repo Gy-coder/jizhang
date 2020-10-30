@@ -11,10 +11,10 @@ const Money: React.FC = () => {
   const {recordItem,setRecordItem} = useRecordItem()
   return (
     <Layout>
-      {recordItem.type}
+      {recordItem.type}{recordItem.tag.id}
       <ChooseType type={recordItem.type} onChange={(type)=> setRecordItem({...recordItem,type:type})} />
       <OutputMoney amount={recordItem.amount} name={recordItem.tag.id}/>
-      <Tags/>
+      <Tags onChange={(tag)=> setRecordItem({...recordItem,tag:tag})}/>
       <Notes/>
       <NumberPad />
     </Layout>

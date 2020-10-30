@@ -17,9 +17,13 @@ const TagItemWrapper = styled.div`
   }
 `;
 
-const TagItem:React.FC<tagItemType> = (props: tagItemType) => {
+
+type Props = {
+  onChange:(tag:tagItemType) => void
+} & tagItemType
+const TagItem:React.FC<Props> = (props: Props) => {
   return (
-    <TagItemWrapper>
+    <TagItemWrapper onClick={()=>props.onChange({id:props.id,tagName:props.tagName})}>
       <Icon name={props.id}/>
       <span>{props.tagName}</span>
     </TagItemWrapper>

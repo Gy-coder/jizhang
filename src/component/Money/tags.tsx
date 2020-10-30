@@ -22,12 +22,18 @@ const TagsWrapper = styled.div`
   font-size: 10px;
 `;
 
-const Tags: React.FC = () => {
+type Props = {
+  onChange: (tag:tagItemType) => void
+}
+const Tags: React.FC<Props> = (props:Props) => {
   return (
     <TagsWrapper>
       {tagsData.map(item => {
         return (
-          <TagItem key={item.id} tagName={item.tagName} id={item.id}/>
+          <TagItem key={item.id}
+                   tagName={item.tagName}
+                   id={item.id}
+                   onChange={(tag)=>props.onChange(tag)}/>
         );
       })}
     </TagsWrapper>

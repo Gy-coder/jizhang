@@ -2,14 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import {TagItem} from './tagItem';
 import {tagItemType} from '../../lib/tagItemType';
+import {tagsData} from '../../lib/incomeTagData';
 
-const tagsData: tagItemType[] = [
-  {id: 'others', tagName: '其它'},
-  {id: 'food', tagName: '餐饮'},
-  {id: 'shopping', tagName: '购物'},
-  {id: 'clothes', tagName: '服饰'},
-  {id:'transport',tagName: '交通'}
-];
+
 const TagsWrapper = styled.div`
   background: #ffffff;
   display:flex;
@@ -26,6 +21,7 @@ type Props = {
   onChange: (tag:tagItemType) => void
 }
 const Tags: React.FC<Props> = (props:Props) => {
+
   return (
     <TagsWrapper>
       {tagsData.map(item => {

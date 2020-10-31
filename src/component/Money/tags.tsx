@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {TagItem} from './tagItem';
 import {tagItemType} from '../../lib/tagItemType';
-import {tagsData} from '../../lib/incomeTagData';
+import {incomeTagData} from '../../lib/incomeTagData';
+import {expenseTagData} from '../../lib/expenseTagData';
 
 
 const TagsWrapper = styled.div`
@@ -18,10 +19,14 @@ const TagsWrapper = styled.div`
 `;
 
 type Props = {
+  type: string
   onChange: (tag:tagItemType) => void
 }
 const Tags: React.FC<Props> = (props:Props) => {
-
+  const [tagsData,setTagsData] = useState<tagItemType[]>([])
+  useEffect(()=>{
+    props.type === '-' ? setTagsData(incomeTagData) : setTagsData(expenseTagData)
+  },[props.type])
   return (
     <TagsWrapper>
       {tagsData.map(item => {

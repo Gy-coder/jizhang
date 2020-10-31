@@ -1,6 +1,6 @@
 import {tagItemType} from './tagItemType';
 
-export const tagsData: tagItemType[] = [
+export const incomeTagData: tagItemType[] = [
   {id: 'others', tagName: '其它'},
   {id: 'food', tagName: '餐饮'},
   {id: 'shopping', tagName: '购物'},
@@ -18,3 +18,4 @@ export const tagsData: tagItemType[] = [
   {id:'gift',tagName: '红包'},
   {id:'lend',tagName: '借出'}
 ];
+

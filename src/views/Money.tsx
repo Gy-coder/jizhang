@@ -14,7 +14,7 @@ const Money: React.FC = () => {
       {recordItem.type}{recordItem.tag.id}
       <ChooseType type={recordItem.type} onChange={(type)=> setRecordItem({...recordItem,type:type})} />
       <OutputMoney amount={recordItem.amount} name={recordItem.tag.id}/>
-      <Tags onChange={(tag)=> setRecordItem({...recordItem,tag:tag})}/>
+      <Tags  type={recordItem.type} onChange={(tag)=> setRecordItem({...recordItem,tag:tag})}/>
       <Notes/>
       <NumberPad />
     </Layout>

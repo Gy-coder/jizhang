@@ -8,21 +8,23 @@ import {NumberPad} from '../component/Money/numberPad';
 import {useRecordItem} from '../hooks/useRecordItem';
 
 const Money: React.FC = () => {
-  const {recordItem,setRecordItem} = useRecordItem()
-  useEffect(()=>{
-    setRecordItem({...recordItem,tag:{id:'others',tagName:'其它'}})
-  },[recordItem.type])
+  const {recordItem, setRecordItem} = useRecordItem();
+  useEffect(() => {
+    setRecordItem({...recordItem, tag: {id: 'others', tagName: '其它'}});
+  }, [recordItem.type]);
   return (
     <Layout>
-      {recordItem.type}{recordItem.tag.id}
+      {recordItem.type}{recordItem.tag.id}{recordItem.note}
       <ChooseType type={recordItem.type}
-                  onChange={(type)=> setRecordItem({...recordItem,type:type})} />
+                  onChange={(type) => setRecordItem({...recordItem, type: type})}/>
       <OutputMoney amount={recordItem.amount}
                    name={recordItem.tag.id} type={recordItem.type}/>
-      <Tags  type={recordItem.type}
-             onChange={(tag)=> setRecordItem({...recordItem,tag:tag})} />
-      <Notes/>
-      <NumberPad />
+      <Tags type={recordItem.type}
+            onChange={(tag) => setRecordItem({...recordItem, tag: tag})}/>
+      <Notes note={recordItem.note}
+             onChange={(note) => setRecordItem({...recordItem, note: note})}
+      />
+      <NumberPad/>
     </Layout>
   );
 };

@@ -21,11 +21,19 @@ const NotesWrapper = styled.label`
   }
 `
 
-const Notes:React.FC = ()=>{
+type Props={
+  note:string,
+  onChange: (e: string)=>void
+}
+const Notes:React.FC<Props> = (props:Props)=>{
   return (
     <NotesWrapper>
       备注
-      <input type='text' placeholder='请输入备注信息'/>
+      <input type='text'
+             placeholder='请输入备注信息'
+             value={props.note}
+             onChange={(e)=>{props.onChange(e.target.value)}}
+      />
     </NotesWrapper>
   )
 }

@@ -20,13 +20,13 @@ const TagsWrapper = styled.div`
 
 type Props = {
   type: string
-  onChange: (tag:tagItemType) => void
+  onChange: (tag: tagItemType) => void
 }
-const Tags: React.FC<Props> = (props:Props) => {
-  const [tagsData,setTagsData] = useState<tagItemType[]>([])
-  useEffect(()=>{
-    props.type === '-' ? setTagsData(incomeTagData) : setTagsData(expenseTagData)
-  },[props.type])
+const Tags: React.FC<Props> = (props: Props) => {
+  const [tagsData, setTagsData] = useState<tagItemType[]>([]);
+  useEffect(() => {
+    props.type === '-' ? setTagsData(incomeTagData) : setTagsData(expenseTagData);
+  }, [props.type]);
   return (
     <TagsWrapper>
       {tagsData.map(item => {
@@ -34,7 +34,7 @@ const Tags: React.FC<Props> = (props:Props) => {
           <TagItem key={item.id}
                    tagName={item.tagName}
                    id={item.id}
-                   onChange={(tag)=>props.onChange(tag)}/>
+                   onChange={(tag) => props.onChange(tag)}/>
         );
       })}
     </TagsWrapper>

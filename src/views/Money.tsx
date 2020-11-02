@@ -18,13 +18,15 @@ const Money: React.FC = () => {
       <ChooseType type={recordItem.type}
                   onChange={(type) => setRecordItem({...recordItem, type: type})}/>
       <OutputMoney amount={recordItem.amount}
-                   name={recordItem.tag.id} type={recordItem.type}/>
+                   name={recordItem.tag.id}
+                   type={recordItem.type}/>
       <Tags type={recordItem.type}
             onChange={(tag) => setRecordItem({...recordItem, tag: tag})}/>
       <Notes note={recordItem.note}
              onChange={(note) => setRecordItem({...recordItem, note: note})}
       />
-      <NumberPad/>
+      <NumberPad amount={recordItem.amount.toString()}
+                 onChange={(amount)=>setRecordItem({...recordItem,amount:parseFloat(amount)})}/>
     </Layout>
   );
 };

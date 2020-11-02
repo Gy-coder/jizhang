@@ -15,6 +15,7 @@ const NotesWrapper = styled.label`
     flex-grow: 1;
     padding: 0 16px;
     border: none;
+    font-size:18px;
   }
   > span {
     padding-right: 16px;

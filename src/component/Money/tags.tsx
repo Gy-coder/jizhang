@@ -19,7 +19,7 @@ const TagsWrapper = styled.div`
 `;
 
 type Props = {
-  type: string
+  type: ('-' | '+')
   onChange: (tag: tagItemType) => void
 }
 const Tags: React.FC<Props> = (props: Props) => {

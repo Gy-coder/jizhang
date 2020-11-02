@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
 const NumberPadWrapper = styled.div`
@@ -40,26 +40,47 @@ const NumberPadWrapper = styled.div`
   }
   
 `;
-const NumberPad: React.FC = () => {
+type Props = {
+  amount: string,
+  onChange: (amount: string) => void
+}
+const NumberPad: React.FC<Props> = (props: Props) => {
+  const [price, setPrice] = useState(props.amount);
+  const btnClick = (e: React.MouseEvent) => {
+    const text = (e.target as HTMLButtonElement).innerHTML;
+    if ('0123456789'.indexOf(text) >= 0) {
+      if (price === '0') {
+        setPrice(item =>item = text);
+      } else {
+        setPrice(item => item + text);
+      }
+    }
+    if (text === '.') {
+      if (price.indexOf('.') < 0) {
+        setPrice(item => item + text);
+      }
+    }
+    console.log(price);
+    props.onChange(price);
+  };
   return (
     <NumberPadWrapper>
       <div className='clear'>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
+        <button onClick={btnClick}>1</button>
+        <button onClick={btnClick}>2</button>
+        <button onClick={btnClick}>3</button>
         <button>删除</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
+        <button onClick={btnClick}>4</button>
+        <button onClick={btnClick}>5</button>
+        <button onClick={btnClick}>6</button>
         <button>清零</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
+        <button onClick={btnClick}>7</button>
+        <button onClick={btnClick}>8</button>
+        <button onClick={btnClick}>9</button>
         <button className='ok'>OK</button>
-        <button className='zero'>0</button>
-        <button>.</button>
+        <button onClick={btnClick} className='zero'>0</button>
+        <button onClick={btnClick}>.</button>
       </div>
-
     </NumberPadWrapper>
   );
 };

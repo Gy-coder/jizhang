@@ -43,6 +43,7 @@ const NumberPadWrapper = styled.div`
 type Props = {
   amount: string,
   onChange: (amount: string) => void
+  onOk?:()=>void
 }
 const NumberPad: React.FC<Props> = (props: Props) => {
   const [price, setPrice] = useState(props.amount);
@@ -50,30 +51,47 @@ const NumberPad: React.FC<Props> = (props: Props) => {
     const text = (e.target as HTMLButtonElement).innerHTML;
     if ('0123456789'.indexOf(text) >= 0) {
       if (price === '0') {
-        setPrice(item =>item = text);
+        props.onChange(text);
+        setPrice(text);
       } else {
-        setPrice(item => item + text);
+        props.onChange(price + text);
+        setPrice(price + text);
       }
     }
     if (text === '.') {
       if (price.indexOf('.') < 0) {
-        setPrice(item => item + text);
+        props.onChange(price + text);
+        setPrice(price + text);
       }
     }
-    console.log(price);
-    props.onChange(price);
   };
+  const removePrice = () => {
+    if (price.length > 1) {
+      props.onChange(price.slice(0, -1));
+      setPrice(price.slice(0, -1));
+    } else if (price.length === 1) {
+      props.onChange('0');
+      setPrice('0');
+    }
+  };
+  const cleared = ()=>{
+    props.onChange('0')
+    setPrice('0')
+  }
+  const ok  = ()=>{
+
+  }
   return (
     <NumberPadWrapper>
       <div className='clear'>
         <button onClick={btnClick}>1</button>
         <button onClick={btnClick}>2</button>
         <button onClick={btnClick}>3</button>
-        <button>删除</button>
+        <button onClick={removePrice}>删除</button>
         <button onClick={btnClick}>4</button>
         <button onClick={btnClick}>5</button>
         <button onClick={btnClick}>6</button>
-        <button>清零</button>
+        <button onClick={cleared}>清零</button>
         <button onClick={btnClick}>7</button>
         <button onClick={btnClick}>8</button>
         <button onClick={btnClick}>9</button>

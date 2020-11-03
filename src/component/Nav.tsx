@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 import {Icon} from './Icon';
 
@@ -26,27 +26,31 @@ const NavWrapper = styled.ul`
     }
    }
   }
+  .selected{
+    color:#fd6b71;
+    fill:#fd6b71;
+  }
 `;
 const Nav: React.FC = () => {
   return (
     <NavWrapper>
       <li>
-        <Link to="/money">
+        <NavLink to="/money" activeClassName='selected'>
           <Icon name='money'/>
           记一笔
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to="/statistics">
+        <NavLink to="/statistics" activeClassName='selected'>
           <Icon name='statistics'/>
           本月概况
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to="/chart">
+        <NavLink to="/chart" activeClassName='selected'>
           <Icon name='chart'/>
           图表分析
-        </Link>
+        </NavLink>
       </li>
     </NavWrapper>
   );

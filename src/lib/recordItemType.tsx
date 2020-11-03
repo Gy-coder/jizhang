@@ -5,5 +5,5 @@ export type recordItemType = {
   type:('-' | '+')
   amount:number,
   note:string,
-  createAt?:Date
+  createAt?:string
 }

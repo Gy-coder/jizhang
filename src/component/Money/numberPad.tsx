@@ -43,7 +43,7 @@ const NumberPadWrapper = styled.div`
 type Props = {
   amount: string,
   onChange: (amount: string) => void
-  onOk?:()=>void
+  onOk:()=>void
 }
 const NumberPad: React.FC<Props> = (props: Props) => {
   const [price, setPrice] = useState(props.amount);
@@ -79,7 +79,7 @@ const NumberPad: React.FC<Props> = (props: Props) => {
     setPrice('0')
   }
   const ok  = ()=>{
-
+    props.onOk()
   }
   return (
     <NumberPadWrapper>
@@ -95,7 +95,7 @@ const NumberPad: React.FC<Props> = (props: Props) => {
         <button onClick={btnClick}>7</button>
         <button onClick={btnClick}>8</button>
         <button onClick={btnClick}>9</button>
-        <button className='ok'>OK</button>
+        <button className='ok' onClick={ok}>OK</button>
         <button onClick={btnClick} className='zero'>0</button>
         <button onClick={btnClick}>.</button>
       </div>

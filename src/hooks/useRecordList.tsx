@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import {recordItemType} from '../lib/recordItemType';
+import {useUpdate} from './useUpdate';
 
 
 const useRecordList = () => {
@@ -7,7 +8,7 @@ const useRecordList = () => {
   useEffect(() => {
     setRecordList(JSON.parse(window.localStorage.getItem('recordList') || '[]'));
   }, []);
-  useEffect(() => {
+  useUpdate(() => {
     window.localStorage.setItem('recordList', JSON.stringify(recordList));
   }, [recordList]);
   const addRecordList = (newRecord: recordItemType) => {

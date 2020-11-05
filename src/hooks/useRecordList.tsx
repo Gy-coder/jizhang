@@ -13,7 +13,7 @@ const useRecordList = () => {
   }, [recordList]);
   const addRecordList = (newRecord: recordItemType) => {
     if (newRecord.amount === 0) {
-      alert('请输出金额');
+      alert('请输入金额');
       return false;
     }
     const finalRecord = {...newRecord, createAt: new Date().toISOString()};

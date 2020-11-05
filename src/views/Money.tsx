@@ -10,7 +10,7 @@ import {useRecordList} from '../hooks/useRecordList';
 
 const Money: React.FC = () => {
   const {recordItem, setRecordItem} = useRecordItem();
-  const {recordList,addRecordList} = useRecordList();
+  const {recordList, addRecordList} = useRecordList();
   useEffect(() => {
     setRecordItem({...recordItem, tag: {id: 'others', tagName: '其它'}});
   }, [recordItem.type]);
@@ -37,8 +37,8 @@ const Money: React.FC = () => {
                    if (addRecordList(recordItem)) {
                      console.log(recordItem);
                      console.log(recordList);
-                     alert('添加成功')
-                     window.localStorage.setItem('recordList',JSON.stringify(recordList))
+                     alert('添加成功');
+                     window.localStorage.setItem('recordList', JSON.stringify(recordList));
                    }
                  }}
       />

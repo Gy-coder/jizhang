@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {Icon} from '../Icon';
 import {Link} from 'react-router-dom';
@@ -54,26 +54,41 @@ const MonthStatisticsWrapper = styled.div`
       padding-left: 3px;
      }
   }
-  
 `;
-const MonthStatistics: React.FC = () => {
+
+type Props = {
+  incomeMoney: number,
+  expenseMoney: number,
+}
+const MonthStatistics: React.FC<Props> = (props: Props) => {
+  const [budget, setBudget] = useState<number>(JSON.parse( window.localStorage.getItem('budget') || '0'));
+  useEffect(()=>{
+    window.localStorage.setItem('budget',JSON.stringify(budget))
+  },[budget])
+  const btnClick = () => {
+    const budgetInput: string | null = window.prompt('请输出预算金额');
+    if (budgetInput) {
+      console.log(parseFloat(budgetInput));
+      setBudget(parseFloat(budgetInput));
+    }
+  };
   return (
     <MonthStatisticsWrapper>
       <div className='title'>本月支出</div>
-      <span className='expense'>$ 0</span>
+      <span className='expense'>{`$ ${props.incomeMoney}`}</span>
       <div className='budget'>
         <span>
           <span className='parcel'>本月收入</span>
-          <span>$0</span>
+          <span>{`$ ${props.expenseMoney}`}</span>
         </span>
         <span>
           <span className='parcel'>预算剩余</span>
-          <button>设置预算</button>
+          <button onClick={()=>btnClick()}>{budget === 0 ? '设置预算': `$ ${budget-props.expenseMoney}`}</button>
         </span>
       </div>
       <div className='chart'>
         <Link to='/chart'>
-          <Icon name='chart' />
+          <Icon name='chart'/>
           <span>查看图表分析</span>
         </Link>
       </div>

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import {TagItem} from './tagItem';
+import {TagItem} from './TagItem';
 import {tagItemType} from '../../lib/tagItemType';
 import {incomeTagData} from '../../lib/incomeTagData';
 import {expenseTagData} from '../../lib/expenseTagData';

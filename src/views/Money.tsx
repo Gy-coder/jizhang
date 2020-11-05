@@ -1,10 +1,10 @@
 import {Layout} from '../component/Layout';
 import React, {useEffect} from 'react';
-import {ChooseType} from '../component/Money/chooseType';
-import {OutputMoney} from '../component/Money/outputMoney';
-import {Tags} from '../component/Money/tags';
-import {Notes} from '../component/Money/notes';
-import {NumberPad} from '../component/Money/numberPad';
+import {ChooseType} from '../component/Money/ChooseType';
+import {OutputMoney} from '../component/Money/OutputMoney';
+import {Tags} from '../component/Money/Tags';
+import {Notes} from '../component/Money/Notes';
+import {NumberPad} from '../component/Money/NumberPad';
 import {useRecordItem} from '../hooks/useRecordItem';
 import {useRecordList} from '../hooks/useRecordList';
 

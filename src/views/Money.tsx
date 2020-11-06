@@ -35,8 +35,6 @@ const Money: React.FC = () => {
                  onChange={(amount) => setRecordItem({...recordItem, amount: parseFloat(amount)})}
                  onOk={() => {
                    if (addRecordList(recordItem)) {
-                     console.log(recordItem);
-                     console.log(recordList);
                      alert('添加成功');
                      window.localStorage.setItem('recordList', JSON.stringify(recordList));
                    }

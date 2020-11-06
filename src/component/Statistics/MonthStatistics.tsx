@@ -68,18 +68,17 @@ const MonthStatistics: React.FC<Props> = (props: Props) => {
   const btnClick = () => {
     const budgetInput: string | null = window.prompt('请输出预算金额');
     if (budgetInput) {
-      console.log(parseFloat(budgetInput));
       setBudget(parseFloat(budgetInput));
     }
   };
   return (
     <MonthStatisticsWrapper>
       <div className='title'>本月支出</div>
-      <span className='expense'>{`$ ${props.incomeMoney}`}</span>
+      <span className='expense'>{`$ ${props.expenseMoney}`}</span>
       <div className='budget'>
         <span>
           <span className='parcel'>本月收入</span>
-          <span>{`$ ${props.expenseMoney}`}</span>
+          <span>{`$ ${props.incomeMoney}`}</span>
         </span>
         <span>
           <span className='parcel'>预算剩余</span>

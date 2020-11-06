@@ -7,11 +7,16 @@ const DayStatisticsWrapper = styled.div`
     padding-right: 8px;
   }
 `
-const DayStatistics:React.FC = ()=>{
+
+type Props = {
+  incomeMoney:number,
+  expenseMoney:number,
+}
+const DayStatistics:React.FC<Props> = (props:Props)=>{
   return (
     <DayStatisticsWrapper>
-      <span>今日收入 $0</span>
-      <span>今日支出 $0</span>
+      <span>今日收入 {`$ ${props.incomeMoney}`}</span>
+      <span>今日支出 {`$ ${props.expenseMoney}`}</span>
     </DayStatisticsWrapper>
   )
 }

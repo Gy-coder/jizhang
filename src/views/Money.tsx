@@ -16,8 +16,6 @@ const Money: React.FC = () => {
   }, [recordItem.type]);
   return (
     <Layout>
-      {recordItem.type}{recordItem.tag.id}{recordItem.note}{recordItem.amount}
-      <hr/>
       <ChooseType type={recordItem.type}
                   onChange={(type) => setRecordItem({...recordItem, type: type})}
       />

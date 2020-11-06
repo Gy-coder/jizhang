@@ -18,7 +18,7 @@ const RecordDetail: React.FC<Props> = (props:Props) => {
     <RecordDetailWrapper>
       {props.recordList.map(item=>{
         return (
-          <RecordItem tag={item.tag} amount={item.amount} time={item.createAt as string} id={(item.id as number).toString()}/>
+          <RecordItem key={item.id} tag={item.tag} amount={item.amount} time={item.createAt as string} id={(item.id as number).toString()}/>
         )
       })}
       {/*<RecordItem/>*/}

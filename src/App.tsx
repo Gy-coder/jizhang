@@ -19,7 +19,7 @@ function App() {
       {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
       <Switch>
-        <Route path="/money">
+        <Route path="/money" exact>
          <Money/>
         </Route>
         <Route path="/statistics" exact>
@@ -28,7 +28,7 @@ function App() {
         <Route path="/statistics/edit/:id" exact>
           <EditRecord/>
         </Route>
-        <Route path="/chart">
+        <Route path="/chart" exact>
           <Chart/>
         </Route>
         <Redirect from='/' to="money" exact/>

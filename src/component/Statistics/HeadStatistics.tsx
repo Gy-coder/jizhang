@@ -8,7 +8,7 @@ const HeadWrapper  = styled.header`
    padding:10px;
    font-weight: 500;
 `
-const Head:React.FC  = ()=>{
+const HeadStatistics:React.FC  = ()=>{
   return (
     <HeadWrapper>
       我的记账本
@@ -16,4 +16,4 @@ const Head:React.FC  = ()=>{
   )
 }
 
-export {Head}
+export {HeadStatistics}

@@ -10,6 +10,7 @@ import {Money} from './views/Money';
 import {Statistics} from './views/Statistics';
 import {Chart} from './views/Chart';
 import {NoMatch} from './views/NoMatch';
+import {EditRecord} from './views/EditRecord';
 
 
 function App() {
@@ -21,13 +22,16 @@ function App() {
         <Route path="/money">
          <Money/>
         </Route>
-        <Route path="/statistics">
+        <Route path="/statistics" exact>
           <Statistics/>
+        </Route>
+        <Route path="/statistics/edit/:id" exact>
+          <EditRecord/>
         </Route>
         <Route path="/chart">
           <Chart/>
         </Route>
-        <Redirect to="money" />
+        <Redirect from='/' to="money" exact/>
         <Route path="*">
           <NoMatch />
         </Route>

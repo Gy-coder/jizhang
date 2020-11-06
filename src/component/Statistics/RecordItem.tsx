@@ -40,12 +40,13 @@ const RecordItemWrapper = styled.div`
 type Props = {
   tag: tagItemType,
   amount: number,
-  time: string
+  time: string,
+  id:string
 }
 const RecordItem: React.FC<Props> = (props: Props) => {
   return (
     <RecordItemWrapper>
-      <Link to=''>
+      <Link to={`/statistics/edit/${props.id}`}>
         <Icon name={props.tag.id}/>
         <span>{props.tag.tagName}</span>
         <span className='bill'>

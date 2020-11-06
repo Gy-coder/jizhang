@@ -16,7 +16,7 @@ const useRecordList = () => {
       alert('请输入金额');
       return false;
     }
-    const finalRecord = {...newRecord, createAt: new Date().toISOString()};
+    const finalRecord = {...newRecord, createAt: new Date().toISOString(),id:0};
     setRecordList([...recordList, finalRecord]);
     return true;
   };

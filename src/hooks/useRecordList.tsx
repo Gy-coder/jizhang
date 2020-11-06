@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import {recordItemType} from '../lib/recordItemType';
 import {useUpdate} from './useUpdate';
+import {createID} from '../lib/createID';
 
 
 const useRecordList = () => {
@@ -16,7 +17,7 @@ const useRecordList = () => {
       alert('请输入金额');
       return false;
     }
-    const finalRecord = {...newRecord, createAt: new Date().toISOString(),id:0};
+    const finalRecord = {...newRecord, createAt: new Date().toISOString(),id:createID()};
     setRecordList([...recordList, finalRecord]);
     return true;
   };

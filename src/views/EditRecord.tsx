@@ -9,37 +9,40 @@ import {useRecordList} from '../hooks/useRecordList';
 
 const EditRecord: React.FC = () => {
   const {id} = useParams<{ id: string }>();
-  const {fetchRecord, setRecordList, deleteRecord} = useRecordList();
+  const {fetchRecord, recordList, setRecordList, deleteRecord} = useRecordList();
   const recordItem = fetchRecord(parseInt(id));
-  let changeAmount = 0;
-  let changeNote = '';
-  if (recordItem) {
-    changeAmount = recordItem.amount;
-    changeNote = recordItem.note;
-  }
-  console.log(changeAmount);
-  const recordItemContent = () => {
+
+  const RecordItemContent = () => {
+    const [changeAmount, setChangeAmount] = useState(recordItem.amount);
+    const [changeNote, setChangeNote] = useState(recordItem.note);
     return (
       <>
         {changeAmount}{changeNote}
         <HeadEdit tag={recordItem.tag}/>
         <NoteEdit title='金额' content={changeAmount.toString()}
                   onChange={(amount) => {
-                    changeAmount = parseFloat(amount);
-                    console.log(changeAmount);
+                    if(amount.length === 0) return setChangeAmount(0)
+                    setChangeAmount(parseFloat(amount));
                   }}/>
-        <NoteEdit title='备注' content={changeNote} onChange={(note) => {changeNote = note;}}/>
-        <ButtonsEdit onChange={() => {}}
-                     onDelete={() => {
-                       deleteRecord(parseInt(id));
-                     }}
+        <NoteEdit title='备注' content={changeNote}
+                  onChange={(note) => {
+                    setChangeNote(note);
+                  }}/>
+        <ButtonsEdit
+          onChange={() => {
+            const unChangeList = recordList.filter(item => item.id !== parseInt(id));
+            setRecordList([...unChangeList, {...recordItem, amount: changeAmount, note: changeNote}]);
+          }}
+          onDelete={() => {
+            deleteRecord(parseInt(id));
+          }}
         />
       </>
     );
   };
   return (
     <Layout>
-      {recordItem ? recordItemContent() : <>{'record不存在'}</>}
+      {recordItem ? RecordItemContent() : <>{'record不存在'}</>}
     </Layout>
   );
 };

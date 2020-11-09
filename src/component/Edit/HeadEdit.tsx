@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Icon} from '../Icon';
 import {Link} from 'react-router-dom';
+import {tagItemType} from '../../lib/tagItemType';
 
 const HeadEditWrapper = styled.header`
   background: #ffffff;
@@ -29,16 +30,19 @@ const HeadEditWrapper = styled.header`
     }
   }
 `;
+type Props = {
+  tag:tagItemType
+}
 
-const HeadEdit: React.FC = () => {
+const HeadEdit: React.FC<Props> = (props:Props) => {
   return (
     <HeadEditWrapper>
       <Link to='/statistics'>
         <Icon name='left'/>
       </Link>
       <div className='title'>
-        <Icon name='others'/>
-        <span>其它</span>
+        <Icon name={props.tag.id}/>
+        <span>{props.tag.tagName}</span>
       </div>
       <span></span>
     </HeadEditWrapper>

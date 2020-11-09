@@ -19,11 +19,17 @@ const NodeEditWrapper = styled.label`
     padding-right: 16px;
   }
 `
-const NoteEdit = ()=>{
+
+type Props = {
+  title:string,
+  content:string,
+  onChange:(e:string)=>void
+}
+const NoteEdit:React.FC<Props> = (props:Props)=>{
   return (
     <NodeEditWrapper>
-      <span>金额</span>
-      <input />
+      <span>{props.title}</span>
+      <input type='text' value={props.content} onChange={(e)=>props.onChange(e.target.value)}/>
     </NodeEditWrapper>
   )
 }

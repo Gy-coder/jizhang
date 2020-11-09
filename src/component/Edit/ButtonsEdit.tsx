@@ -23,13 +23,17 @@ const ButtonEditWrapper = styled.div`
       margin-left: 15px;
     }
   }
-`
+`;
 
-const ButtonsEdit: React.FC = () => {
+type Props = {
+  onChange: () => void,
+  onDelete: () => void
+}
+const ButtonsEdit: React.FC<Props> = (props:Props) => {
   return (
     <ButtonEditWrapper>
-      <button>修改</button>
-      <button>删除</button>
+      <button onClick={()=>props.onChange()}>修改</button>
+      <button onClick={()=>props.onDelete()}>删除</button>
     </ButtonEditWrapper>
   );
 };

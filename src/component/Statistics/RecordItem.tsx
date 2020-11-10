@@ -41,7 +41,7 @@ type Props = {
   tag: tagItemType,
   amount: number,
   time: string,
-  id:string
+  id: string
 }
 const RecordItem: React.FC<Props> = (props: Props) => {
   return (
@@ -52,9 +52,8 @@ const RecordItem: React.FC<Props> = (props: Props) => {
         <span className='bill'>
           <span className='amount'>{`$ ${props.amount}`}</span>
           <span className='time'>{dayjs(props.time).format('MM月DD日 H:mm')}</span>
-      </span>
+        </span>
       </Link>
-
     </RecordItemWrapper>
   );
 };

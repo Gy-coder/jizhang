@@ -8,10 +8,10 @@ import {useRecordList} from '../hooks/useRecordList';
 
 const EditRecord: React.FC = () => {
   const {id} = useParams<{ id: string }>();
-  const {fetchRecord, recordList, setRecordList, deleteRecord} = useRecordList();
+  const {fetchRecord, deleteRecord, changeRecord} = useRecordList();
   const recordItem = fetchRecord(parseInt(id));
 
-  const RecordItemContent = () => {
+  const RecordItemContent: React.FC = () => {
     const [changeAmount, setChangeAmount] = useState(recordItem.amount);
     const [changeNote, setChangeNote] = useState(recordItem.note);
     return (
@@ -28,11 +28,12 @@ const EditRecord: React.FC = () => {
                   }}/>
         <ButtonsEdit
           onChange={() => {
-            const unChangeList = recordList.filter(item => item.id !== parseInt(id));
-            setRecordList([...unChangeList, {...recordItem, amount: changeAmount, note: changeNote}]);
+            changeRecord(id, recordItem, changeAmount, changeNote);
+            window.alert('修改成功');
           }}
           onDelete={() => {
             deleteRecord(parseInt(id));
+            window.alert('删除成功');
           }}
         />
       </>

@@ -24,18 +24,14 @@ const useRecordList = () => {
   const fetchRecord = (id: number) => {
     return recordList.filter((item) => item.id === id)[0];
   };
-  const findIndex = (id: number) => {
-    for (let i = 0; i < recordList.length; i++) {
-      if (recordList[i].id === id) {
-        return i;
-      }
-    }
-    return -1;
-  };
   const deleteRecord = (id: number) => {
     setRecordList(recordList.filter(item => item.id !== id));
   };
-  return {recordList, setRecordList, addRecordList, fetchRecord, deleteRecord};
+  const changeRecord = (id: string, recordItem: recordItemType, changeAmount: number, changeNote: string) => {
+    const unChangeList = recordList.filter(item => item.id !== parseInt(id));
+    setRecordList([{...recordItem, amount: changeAmount, note: changeNote}, ...unChangeList]);
+  };
+  return {recordList, setRecordList, addRecordList, fetchRecord, deleteRecord, changeRecord};
 };
 
 export {useRecordList};

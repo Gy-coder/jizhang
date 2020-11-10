@@ -20,24 +20,24 @@ const NotesWrapper = styled.label`
   > span {
     padding-right: 16px;
   }
-`
+`;
 
-type Props={
-  note:string,
-  onChange: (e: string)=>void
+type Props = {
+  note: string,
+  onChange: (e: string) => void
 }
-const Notes:React.FC<Props> = (props:Props)=>{
+const Notes: React.FC<Props> = (props: Props) => {
   return (
     <NotesWrapper>
       备注
       <input type='text'
              placeholder='请输入备注信息'
              value={props.note}
-             onChange={(e)=>{props.onChange(e.target.value)}}
+             onChange={(e) => {props.onChange(e.target.value);}}
       />
     </NotesWrapper>
-  )
-}
+  );
+};
 
 
-export {Notes}
+export {Notes};

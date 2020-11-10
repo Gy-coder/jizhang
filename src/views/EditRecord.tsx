@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-
 import {useParams} from 'react-router-dom';
 import {Layout} from '../component/Layout';
 import {HeadEdit} from '../component/Edit/HeadEdit';
@@ -17,11 +16,10 @@ const EditRecord: React.FC = () => {
     const [changeNote, setChangeNote] = useState(recordItem.note);
     return (
       <>
-        {changeAmount}{changeNote}
         <HeadEdit tag={recordItem.tag}/>
         <NoteEdit title='金额' content={changeAmount.toString()}
                   onChange={(amount) => {
-                    if(amount.length === 0) return setChangeAmount(0)
+                    if (amount.length === 0) return setChangeAmount(0);
                     setChangeAmount(parseFloat(amount));
                   }}/>
         <NoteEdit title='备注' content={changeNote}
@@ -42,7 +40,7 @@ const EditRecord: React.FC = () => {
   };
   return (
     <Layout>
-      {recordItem ? RecordItemContent() : <>{'record不存在'}</>}
+      {recordItem ? <RecordItemContent></RecordItemContent> : <>{'record不存在'}</>}
     </Layout>
   );
 };

@@ -25,7 +25,7 @@ const OutPutMoneyWrapper = styled.div`
 
 type Props = {
   name:string,
-  amount:number,
+  amount:string,
   type:string
 }
 const OutputMoney: React.FC<Props> = (props) => {

@@ -1,5 +1,5 @@
 import {Layout} from '../component/Layout';
-import React from 'react';
+import React, {useState} from 'react';
 import {HeadComponent} from '../component/Common/HeadComponent';
 import {Summary} from '../component/Chart/Summary';
 import {sumCalculate} from '../lib/sumCalculate';
@@ -41,13 +41,14 @@ const Chart: React.FC = () => {
     incomeSum: monthIncomeSum,
     expenseSum: monthExpenseSum
   } = sumCalculate(recordList, 'month');
+  const [currentType,setCurrentType] = useState<('-' | '+')>('-')
   return (
     <Layout>
       <HeadComponent title='账单详情'/>
       <Summary incomeSum={monthIncomeSum} expenseSum={monthExpenseSum} incomeNum={monthIncomeList.length}
                expenseNum={monthExpenseList.length}/>
       <ChooseTypeWrapper>
-        <ChooseType type='-' onChange={() => {console.log(1);}}/>
+        <ChooseType type={currentType} onChange={(type) => {setCurrentType(type);}}/>
       </ChooseTypeWrapper>
     </Layout>
   );

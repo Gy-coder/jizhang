@@ -27,9 +27,23 @@ const useRecordList = () => {
   const deleteRecord = (id: number) => {
     setRecordList(recordList.filter(item => item.id !== id));
   };
-  const changeRecord = (id: string, recordItem: recordItemType, changeAmount: number, changeNote: string) => {
-    const unChangeList = recordList.filter(item => item.id !== parseInt(id));
-    setRecordList([{...recordItem, amount: changeAmount, note: changeNote}, ...unChangeList]);
+  const findIndex = (id: number) => {
+    let result = -1;
+    for (let i = 0; i < recordList.length; i++) {
+      if (recordList[i].id === id) {
+        result = i;
+        break;
+      }
+    }
+    return result;
+  };
+  const changeRecord = (id: number, recordItem: recordItemType, changeAmount: number, changeNote: string) => {
+    const index = findIndex(id)
+    if(index >= 0){
+      const beforeRecordItem = recordList.slice(0,index)
+      const afterRecordItem = recordList.slice(index+1,recordList.length)
+      setRecordList([...beforeRecordItem,{...recordItem,amount:changeAmount,note:changeNote},...afterRecordItem]);
+    }
   };
   return {recordList, setRecordList, addRecordList, fetchRecord, deleteRecord, changeRecord};
 };

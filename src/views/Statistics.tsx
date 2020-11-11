@@ -1,6 +1,6 @@
 import {Layout} from '../component/Layout';
 import React from 'react';
-import {HeadStatistics} from '../component/Statistics/HeadStatistics';
+import {HeadComponent} from '../component/Common/HeadComponent';
 import {MonthStatistics} from '../component/Statistics/MonthStatistics';
 import {DayStatistics} from '../component/Statistics/DayStatistics';
 import {RecordDetail} from '../component/Statistics/RecordDetail';
@@ -19,7 +19,7 @@ const Statistics: React.FC = () => {
   }
   return (
     <Layout>
-      <HeadStatistics/>
+      <HeadComponent title='我的记账本'/>
       <MonthStatistics incomeMoney={monthIncome} expenseMoney={monthExpense}/>
       <DayStatistics incomeMoney={dayIncome} expenseMoney={dayExpense}/>
       <RecordDetail recordList={recordList}/>

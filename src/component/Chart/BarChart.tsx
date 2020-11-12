@@ -13,10 +13,10 @@ const BarChartWrapper = styled.div`
   > div{
     width: 100%;
   }
-`
+`;
 type Props = {
   typeList: recordItemType[],
-  currentType:('-' | '+')
+  currentType: ('-' | '+')
 }
 const BarChart: React.FC<Props> = (props: Props) => {
   const xAxisData = [];
@@ -31,7 +31,7 @@ const BarChart: React.FC<Props> = (props: Props) => {
     const date = dayjs(props.typeList[i].createAt).date() - 1;
     amountList[date] += props.typeList[i].amount;
   }
-  const colorArray = props.currentType === '-' ? ['#fb6a74'] : ['#62a2f7']
+  const colorArray = props.currentType === '-' ? ['#fb6a74'] : ['#62a2f7'];
   return (
     <BarChartWrapper>
       <ReactEcharts
@@ -44,10 +44,16 @@ const BarChart: React.FC<Props> = (props: Props) => {
             data: amountList,
             type: 'line'
           }],
-          color: colorArray
+          color: colorArray,
+          grid: {
+            x: 50,
+            y: 50,
+            x2: 50,
+            y2: 50,
+            borderWidth: 1
+          }
         }}
       /></BarChartWrapper>
   );
 };
-
 export {BarChart};

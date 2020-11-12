@@ -2,8 +2,18 @@ import React from 'react';
 import ReactEcharts from 'echarts-for-react';
 import {recordItemType} from '../../lib/recordItemType';
 import dayjs from 'dayjs';
+import styled from 'styled-components';
 
 
+const BarChartWrapper = styled.div`
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  > div{
+    width: 100%;
+  }
+`
 type Props = {
   typeList: recordItemType[],
   currentType:('-' | '+')
@@ -23,7 +33,7 @@ const BarChart: React.FC<Props> = (props: Props) => {
   }
   const colorArray = props.currentType === '-' ? ['#fb6a74'] : ['#62a2f7']
   return (
-    <>
+    <BarChartWrapper>
       <ReactEcharts
         option={{
           xAxis: {
@@ -36,7 +46,7 @@ const BarChart: React.FC<Props> = (props: Props) => {
           }],
           color: colorArray
         }}
-      /></>
+      /></BarChartWrapper>
   );
 };
 

@@ -6,6 +6,9 @@ import {sumCalculate} from '../lib/sumCalculate';
 import {useRecordList} from '../hooks/useRecordList';
 import {ChooseType} from '../component/Common/ChooseType';
 import styled from 'styled-components';
+import ReactEcharts from 'echarts-for-react';
+import dayjs from 'dayjs';
+import {BarChart} from '../component/Chart/BarChart';
 
 
 const ChooseTypeWrapper = styled.ol`
@@ -41,7 +44,7 @@ const Chart: React.FC = () => {
     incomeSum: monthIncomeSum,
     expenseSum: monthExpenseSum
   } = sumCalculate(recordList, 'month');
-  const [currentType,setCurrentType] = useState<('-' | '+')>('-')
+  const [currentType, setCurrentType] = useState<('-' | '+')>('-');
   return (
     <Layout>
       <HeadComponent title='账单详情'/>
@@ -50,6 +53,7 @@ const Chart: React.FC = () => {
       <ChooseTypeWrapper>
         <ChooseType type={currentType} onChange={(type) => {setCurrentType(type);}}/>
       </ChooseTypeWrapper>
+      <BarChart typeList={currentType === '-' ? monthExpenseList : monthIncomeList} currentType={currentType}/>
     </Layout>
   );
 };

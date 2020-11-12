@@ -5,7 +5,6 @@ import {HeadEdit} from '../component/Edit/HeadEdit';
 import {NoteEdit} from '../component/Edit/NotesEdit';
 import {ButtonsEdit} from '../component/Edit/ButtonsEdit';
 import {useRecordList} from '../hooks/useRecordList';
-import {Notes} from '../component/Money/Notes';
 
 const EditRecord: React.FC = () => {
   const {id} = useParams<{ id: string }>();

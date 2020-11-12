@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import {RecordItem} from './RecordItem';
-import {tagItemType} from '../../lib/tagItemType';
 import {recordItemType} from '../../lib/recordItemType';
 
 

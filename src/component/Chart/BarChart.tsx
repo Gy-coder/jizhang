@@ -23,6 +23,7 @@ const BarChart: React.FC<Props> = (props: Props) => {
   for (let i = 1; i <= dayjs().daysInMonth(); i++) {
     xAxisData.push(i);
   }
+  console.log(xAxisData);
   const amountList = [];
   for (let i = 0; i < dayjs().daysInMonth(); i++) {
     amountList.push(0);
@@ -37,12 +38,14 @@ const BarChart: React.FC<Props> = (props: Props) => {
       <ReactEcharts
         option={{
           xAxis: {
-            data: xAxisData
+            type: 'category',
+            data: xAxisData,
           },
           yAxis: {},
           series: [{
             data: amountList,
-            type: 'line'
+            type: 'line',
+            name:'金额'
           }],
           color: colorArray,
           grid: {
@@ -51,7 +54,13 @@ const BarChart: React.FC<Props> = (props: Props) => {
             x2: 50,
             y2: 50,
             borderWidth: 1
-          }
+          },
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'none'
+            },
+          },
         }}
       /></BarChartWrapper>
   );

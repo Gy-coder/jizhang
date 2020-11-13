@@ -8,7 +8,8 @@ import {ChooseType} from '../component/Common/ChooseType';
 import styled from 'styled-components';
 import ReactEcharts from 'echarts-for-react';
 import dayjs from 'dayjs';
-import {BarChart} from '../component/Chart/BarChart';
+import {LineChart} from '../component/Chart/LineChart';
+import {PieChart} from '../component/Chart/PieChart';
 
 
 const ChooseTypeWrapper = styled.ol`
@@ -53,7 +54,8 @@ const Chart: React.FC = () => {
       <ChooseTypeWrapper>
         <ChooseType type={currentType} onChange={(type) => {setCurrentType(type);}}/>
       </ChooseTypeWrapper>
-      <BarChart typeList={currentType === '-' ? monthExpenseList : monthIncomeList} currentType={currentType}/>
+      <LineChart typeList={currentType === '-' ? monthExpenseList : monthIncomeList} currentType={currentType}/>
+      <PieChart typeList={currentType === '-' ? monthExpenseList : monthIncomeList} currentType={currentType}/>
     </Layout>
   );
 };

@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 import styled from 'styled-components';
 
 
-const BarChartWrapper = styled.div`
+const LineChartWrapper = styled.div`
   display:flex;
   justify-content: center;
   align-items: center;
@@ -18,12 +18,11 @@ type Props = {
   typeList: recordItemType[],
   currentType: ('-' | '+')
 }
-const BarChart: React.FC<Props> = (props: Props) => {
+const LineChart: React.FC<Props> = (props: Props) => {
   const xAxisData = [];
   for (let i = 1; i <= dayjs().daysInMonth(); i++) {
     xAxisData.push(i);
   }
-  console.log(xAxisData);
   const amountList = [];
   for (let i = 0; i < dayjs().daysInMonth(); i++) {
     amountList.push(0);
@@ -34,12 +33,13 @@ const BarChart: React.FC<Props> = (props: Props) => {
   }
   const colorArray = props.currentType === '-' ? ['#fb6a74'] : ['#62a2f7'];
   return (
-    <BarChartWrapper>
+    <LineChartWrapper>
       <ReactEcharts
         option={{
           xAxis: {
             type: 'category',
             data: xAxisData,
+            name:'日期'
           },
           yAxis: {},
           series: [{
@@ -61,8 +61,9 @@ const BarChart: React.FC<Props> = (props: Props) => {
               type: 'none'
             },
           },
+          formatter: '{b}日:<br/> 金额:{c}'
         }}
-      /></BarChartWrapper>
+      /></LineChartWrapper>
   );
 };
-export {BarChart};
+export {LineChart};

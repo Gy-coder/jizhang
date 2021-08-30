@@ -1,23 +1,23 @@
-import React from 'react';
-import ReactEcharts from 'echarts-for-react';
-import {recordItemType} from '../../lib/recordItemType';
-import dayjs from 'dayjs';
-import styled from 'styled-components';
-
+import React from "react";
+import ReactEcharts from "echarts-for-react";
+import { recordItemType } from "../../lib/recordItemType";
+import dayjs from "dayjs";
+import styled from "styled-components";
 
 const LineChartWrapper = styled.div`
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   background: #ffffff;
-  > div{
+  margin: 10px 0 20px 0;
+  > div {
     width: 100%;
   }
 `;
 type Props = {
-  typeList: recordItemType[],
-  currentType: ('-' | '+')
-}
+  typeList: recordItemType[];
+  currentType: "-" | "+";
+};
 const LineChart: React.FC<Props> = (props: Props) => {
   const xAxisData = [];
   for (let i = 1; i <= dayjs().daysInMonth(); i++) {
@@ -31,39 +31,42 @@ const LineChart: React.FC<Props> = (props: Props) => {
     const date = dayjs(props.typeList[i].createAt).date() - 1;
     amountList[date] += props.typeList[i].amount;
   }
-  const colorArray = props.currentType === '-' ? ['#fb6a74'] : ['#62a2f7'];
+  const colorArray = props.currentType === "-" ? ["#fb6a74"] : ["#62a2f7"];
   return (
     <LineChartWrapper>
       <ReactEcharts
         option={{
           xAxis: {
-            type: 'category',
+            type: "category",
             data: xAxisData,
-            name:'日期'
+            name: "日期",
           },
           yAxis: {},
-          series: [{
-            data: amountList,
-            type: 'line',
-            name:'金额'
-          }],
+          series: [
+            {
+              data: amountList,
+              type: "line",
+              name: "金额",
+            },
+          ],
           color: colorArray,
           grid: {
             x: 50,
             y: 50,
             x2: 50,
             y2: 50,
-            borderWidth: 1
+            borderWidth: 1,
           },
           tooltip: {
-            trigger: 'axis',
+            trigger: "axis",
             axisPointer: {
-              type: 'none'
+              type: "none",
             },
           },
-          formatter: '{b}日:<br/> 金额:{c}'
+          formatter: "{b}日:<br/> 金额:{c}",
         }}
-      /></LineChartWrapper>
+      />
+    </LineChartWrapper>
   );
 };
-export {LineChart};
+export { LineChart };
